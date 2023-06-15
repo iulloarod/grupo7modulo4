@@ -2,8 +2,10 @@ import java.util.Scanner;
 
 class GestionCapacitaciones {
     
+    //definicion de scanner fuera de los metodos para que toda la clase lo vea presente
     private static Scanner scanner = new Scanner(System.in);
 
+    //Funcion que contiene todo el metodo principal
     public static void funcion(){
         System.out.println("Ingrese los datos de la capacitación:");
         System.out.print("Día: ");
@@ -19,9 +21,11 @@ class GestionCapacitaciones {
 
         scanner.nextLine(); // Consumir el salto de línea pendiente
 
+        //Creación de arreglos para los asistentes y calificaciones
         String[] nombresAsistentes = new String[cantidadAsistentes];
         int[] calificaciones = new int[cantidadAsistentes];
 
+        //Ciclo for para insertar la cantidad indicada de asistentes y calificaciones a los arreglos
         for (int i = 0; i < cantidadAsistentes; i++) {
             System.out.print("Nombre del asistente " + (i + 1) + ": ");
             nombresAsistentes[i] = scanner.nextLine();
@@ -32,6 +36,7 @@ class GestionCapacitaciones {
             scanner.nextLine(); // Consumir el salto de línea pendiente
         }
 
+        //sout para mostrar la información de la capacitacion
         System.out.println("\nDatos de la capacitación:");
         System.out.println("Día: " + dia);
         System.out.println("Hora: " + hora);
@@ -48,7 +53,8 @@ class GestionCapacitaciones {
         System.out.println("Calificación menor: " + calificacionMinima);
     }
 
-    private static double calcularPromedio(int[] calificaciones) {
+    //funcion que calcula el promedio del arreglo calificaciones
+    public static double calcularPromedio(int[] calificaciones) {
         int suma = 0;
         for (int calificacion : calificaciones) {
             suma += calificacion;
@@ -56,7 +62,8 @@ class GestionCapacitaciones {
         return (double) suma / calificaciones.length;
     }
 
-    private static int obtenerCalificacionMaxima(int[] calificaciones) {
+    //Metodo que obtiene la maxima calificacion del arreglo (maximo valor)
+    public static int obtenerCalificacionMaxima(int[] calificaciones) {
         int maxima = calificaciones[0];
         for (int i = 1; i < calificaciones.length; i++) {
             if (calificaciones[i] > maxima) {
@@ -66,7 +73,8 @@ class GestionCapacitaciones {
         return maxima;
     }
 
-    private static int obtenerCalificacionMinima(int[] calificaciones) {
+    //Metodo que obtiene el valor minimo de la calificacion del arreglo (maximo valor)
+    public static int obtenerCalificacionMinima(int[] calificaciones) {
         int minima = calificaciones[0];
         for (int i = 1; i < calificaciones.length; i++) {
             if (calificaciones[i] < minima) {
@@ -76,6 +84,7 @@ class GestionCapacitaciones {
         return minima;
     }
 
+    //Funcion dedicada a llamar al metodo funcion. Este metodo contiene un try catch para poder capturar errores y en caso de catch llama recursivamente a si mismo
     public static void ejecutar(){
         try {
             funcion();
