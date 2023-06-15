@@ -1,9 +1,10 @@
 import java.util.Scanner;
 
 class GestionCapacitaciones {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    
+    private static Scanner scanner = new Scanner(System.in);
 
+    public static void funcion(){
         System.out.println("Ingrese los datos de la capacitación:");
         System.out.print("Día: ");
         String dia = scanner.nextLine();
@@ -73,5 +74,17 @@ class GestionCapacitaciones {
             }
         }
         return minima;
+    }
+
+    public static void ejecutar(){
+        try {
+            funcion();
+        } catch (Exception e) {
+            System.out.println("ERROR DE FUNCIONAMIENTO");
+            ejecutar();
+        }
+    }
+    public static void main(String[] args) {
+        ejecutar();
     }
 }
