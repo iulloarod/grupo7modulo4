@@ -11,6 +11,8 @@ import Capacitaciones.Capacitaciones;
 public class Main {
     static Scanner sc = new Scanner(System.in);
     static Contenedor cont = new Contenedor();
+
+    //Metodo que contiene el menu
     public static void menu(){
         System.out.println("---------------- Este es el menú principal :) ----------------");
         System.out.println("1) Almacenar cliente");
@@ -23,11 +25,18 @@ public class Main {
         System.out.println("8) Listar capacitaciones");
         System.out.println("9) Salir");
     }
+
+    //Metodo que recibe un string denominado date y lo convierte en formato LocalDate
+    //@date string con fecha a convertir
     public static LocalDate stringToLocalDate(String date){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
         LocalDate localDate = LocalDate.parse(date, formatter);
         return localDate;
     }
+
+    //Metodo que se reutiliza en otras funciones. El principal objetivo es evaluar si cumple los criterios de largo de la cadena texto, retornando un booleano.
+    // @min extremo izquiero
+    // @max extremo derecho
     public static boolean validarLargo (String var, int min, int max){
         boolean flag = false;
         if(var.length() >= min && var.length() <= max){
@@ -35,6 +44,11 @@ public class Main {
         }
         return flag;
     }
+
+    //Metodo que utiliza validarLargo y valida si el texto cumple las condiciones de extremos. Retorna el String que cumple las condiciones
+    // @texto corresponde a un string que se utiliza para imprimir por pantalla.
+    // @min extremo izquiero
+    // @max extremo derecho
     public static String ingresoDeString(String texto, int min, int max){
         System.out.println(texto);
         sc = new Scanner(System.in);
@@ -49,6 +63,11 @@ public class Main {
         }
         return retorno;
     }
+
+    //Metodo similar a ingresoDeString pero para numeros
+    // @texto corresponde a un string que se utiliza para imprimir por pantalla.
+    // @min extremo izquiero
+    // @max extremo derecho
     public static int ingresoNumero(String texto, int minimo, int maximo){
         System.out.println(texto);
         sc = new Scanner(System.in);
@@ -61,6 +80,8 @@ public class Main {
         }
         return retorno;
     }
+
+    //metodo que solicita el ingreso del sistema de salud y valida la opcion ingresada
     public static int ingresoSistemaSalud(){
         int op = 0;
         sc = new Scanner(System.in);
@@ -74,6 +95,9 @@ public class Main {
         }
         return op;
     }
+
+    //Metodo que convierte de string a LocalDate
+    //@texto variable de ingreso para imprimir
     public static LocalDate ingresoFecha(String texto){
         System.out.println(texto);
         sc = new Scanner(System.in);
@@ -82,6 +106,7 @@ public class Main {
         return date;
     }
 
+    //metodo que valida el ingreso del rut si cumple los limites establecidos llamando tambien a la funcion ingresoNumero. En caso de que no se encuentre el rut se vuelve recursivo.
     public static int validarRut(){
         System.out.println("Ingrese rut del cliente: ");
         sc = new Scanner(System.in);
@@ -94,6 +119,7 @@ public class Main {
         return rut;
     }
 
+    //Metodo que solicita el dia de la semana y valida la opcion y lo vuelve recursivo en caso contrario
     public static String validarDia(){
         String dia = "";
         System.out.println("Día de la semana: ");
@@ -129,23 +155,21 @@ public class Main {
        }
         return dia;
     }
+
+    //Metodo que se ocupa de ingresar un usuario
     public static Usuario ingresoUsuario(){
         sc = new Scanner(System.in);
 
         String nombre = ingresoDeString("Nombre: ",10,50);
 
-
-
         LocalDate date = ingresoFecha("Fecha de nacimiento (formato DD/MM/YYYY): ");
-        //al ingresar usar el cambio del date
-
 
         int run = ingresoNumero("Run (sin puntos, sin guión ni dígito verificador): ",0,99999999);
 
         Usuario usu = new Usuario(nombre,date,run);
         return usu;
     }
-
+    //Metodo que se ocupa de ingresar un cliente llamando al ingreso de un usuario
     public static Cliente ingresoCliente(){
         Usuario usu = ingresoUsuario();
 
@@ -171,7 +195,7 @@ public class Main {
         return cli;
 
     }
-
+    //Metodo que se ocupa de ingresar un profesional llamando al ingreso de un usuario
     public static Profesional ingresoProfesional(){
         Usuario usu = ingresoUsuario();
         String titulo = ingresoDeString("Titulo: ",10,50);
@@ -180,7 +204,7 @@ public class Main {
 
         return profesional;
     }
-
+    //Metodo que se ocupa de ingresar un administrativo llamando al ingreso de un usuario
     public static Administrativo ingresoAdiminstrativo(){
         Usuario usu = ingresoUsuario();
         String area = ingresoDeString("Área: ",5,20);
@@ -189,7 +213,7 @@ public class Main {
         Administrativo admin = new Administrativo(usu.getNombre(),usu.getFechaNacimiento(),usu.getRut(),area,exp);
         return admin;
     }
-
+    //metodo que se ocupa de ingresar una capacitacion
     public static Capacitaciones ingresoCapacitaciones(){
         sc = new Scanner(System.in);
         System.out.println("Ingrese identificador: ");
@@ -214,12 +238,12 @@ public class Main {
         return capacita;
     }
 
+    //metodo que retorna un rut valido para poder eliminarlo
     public static int eliminarCliente(){
         int rut = 0;
         System.out.println("Eliminar cliente");
         rut = validarRut();
         return rut;
-
     }
 
 
