@@ -274,9 +274,11 @@ public class Main {
     }
 
     public static void ejecutar(){
-        boolean flag = true;
+        try{
+            boolean flag = true;
         while(flag) {
             menu();
+            sc = new Scanner(System.in);
             int op = sc.nextInt();
  
             switch (op) {
@@ -313,6 +315,10 @@ public class Main {
                     System.out.println("Ingreso no valido");
                     break;
             }
+        }
+        }catch(Exception e){
+            System.out.println("Error de ejecucion");
+            ejecutar();
         }
     }
     public static void main(String[] args) {
