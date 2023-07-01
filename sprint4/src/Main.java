@@ -273,47 +273,49 @@ public class Main {
         cont.listarCapacitaciones();
     }
 
+    public static void ejecutar(){
+        boolean flag = true;
+        while(flag) {
+            menu();
+            int op = sc.nextInt();
+ 
+            switch (op) {
+                case 1:
+                    ingreso1();
+                    break;
+                case 2:
+                    ingreso2();
+                    break;
+                case 3:
+                    ingreso3();
+                    break;
+                case 4:
+                    ingreso4();
+                    break;
+                case 5:
+                    ingreso5();
+                    break;
+                case 6:
+                    ingreso6();
+                    break;
+                case 7:
+                    ingreso7();
+                    break;
+                case 8:
+                    ingreso8();
+                    break;
+                case 9:
+                    System.out.println("Saliendo......");
+                    flag = false;
+                    break;
+ 
+                default:
+                    System.out.println("Ingreso no valido");
+                    break;
+            }
+        }
+    }
     public static void main(String[] args) {
-
-       boolean flag = true;
-       while(flag) {
-           menu();
-           int op = sc.nextInt();
-
-           switch (op) {
-               case 1:
-                   ingreso1();
-                   break;
-               case 2:
-                   ingreso2();
-                   break;
-               case 3:
-                   ingreso3();
-                   break;
-               case 4:
-                   ingreso4();
-                   break;
-               case 5:
-                   ingreso5();
-                   break;
-               case 6:
-                   ingreso6();
-                   break;
-               case 7:
-                   ingreso7();
-                   break;
-               case 8:
-                   ingreso8();
-                   break;
-               case 9:
-                   System.out.println("Saliendo......");
-                   flag = false;
-                   break;
-
-               default:
-                   System.out.println("Ingreso no valido");
-                   break;
-           }
-       }
+        ejecutar();
     }
 }
