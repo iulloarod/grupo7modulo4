@@ -9,6 +9,9 @@ import Administrativo.Administrativo;
 import Capacitaciones.Capacitaciones;
 
 public class Main {
+
+    // Se definen 2 variables estaticas para poder trabajarlas durante toda la clase.
+    // Scanner sc para los ingresos por pantalla y la clase contenedor, la cual contiene la lista de interfaces y de capacitaciones.
     static Scanner sc = new Scanner(System.in);
     static Contenedor cont = new Contenedor();
 
@@ -246,7 +249,8 @@ public class Main {
         return rut;
     }
 
-
+// En esta seccion se crean metodos que se dedican a realizar funciones especificas bajo la clase contenedor
+// dichos metodos son llamados desde el switch case correspondoente a la opcion seleccionada del menu de acciones.
     public static void ingreso1(){
         cont.almacenarCliente(ingresoCliente());
     }
