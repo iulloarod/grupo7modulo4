@@ -61,6 +61,30 @@ public class Contenedor {
         }
     }
 
+    public void listarUsuariosDTP(){
+        for(Asesoria as:asesorias){
+            if(as instanceof Profesional){
+                as.analizarUsuario();
+            }
+        }
+    }
+
+    public void listarUsuariosDTC(){
+        for(Asesoria as:asesorias){
+            if(as instanceof Cliente){
+                as.analizarUsuario();
+            }
+        }
+    }
+
+    public void listarUsuariosDTA(){
+        for(Asesoria as:asesorias){
+            if(as instanceof Administrativo){
+                as.analizarUsuario();
+            }
+        }
+    }
+
     public boolean validarRut(int rut){
         boolean flag = false;
         for(Asesoria as:asesorias){
