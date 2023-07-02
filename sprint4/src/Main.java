@@ -249,6 +249,28 @@ public class Main {
         return rut;
     }
 
+    public static void listarUsuariosDT() {
+        sc = new Scanner(System.in);
+        System.out.println("Seleccione el tipo de usuario \n1) Cliente \n2) Profesional \n3) Administrativo");
+        int op = sc.nextInt();
+        
+        switch (op) {
+             case 1:
+                  cont.listarUsuariosDTC();
+                  break;
+             case 2:
+                  cont.listarUsuariosDTP();
+                  break;
+             case 3:
+                  cont.listarUsuariosDTA();
+                  break;
+             default:
+                  System.out.println("Opción no válida")
+                  listarUsuariosDT();
+                  break;
+        }
+    }
+
 // En esta seccion se crean metodos que se dedican a realizar funciones especificas bajo la clase contenedor
 // dichos metodos son llamados desde el switch case correspondoente a la opcion seleccionada del menu de acciones.
     public static void ingreso1(){
@@ -271,7 +293,7 @@ public class Main {
         cont.listarUsuariosIT();
     }
     public static void ingreso7(){
-        cont.listarUsuariosDP();
+        cont.listarUsuariosDT();
     }
     public static void ingreso8(){
         cont.listarCapacitaciones();
