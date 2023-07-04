@@ -265,7 +265,7 @@ public class Main {
                   cont.listarUsuariosDTA();
                   break;
              default:
-                  System.out.println("Opción no válida")
+                  System.out.println("Opción no válida");
                   listarUsuariosDT();
                   break;
         }

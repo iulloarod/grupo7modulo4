@@ -101,4 +101,26 @@ public class Contenedor {
             cap.mostrarDetalle();
         }
     }
+
+    public void listarUsuariosDT() {
+        System.out.println("Usuarios (dependiendo el tipo):");
+        System.out.println("Clientes:");
+        for (Asesoria asesoria : asesorias) {
+            if (asesoria instanceof Cliente) {
+                System.out.println(((Cliente) asesoria).getNombre() + "\n" + ((Cliente) asesoria).getRut());
+            }
+        }
+        System.out.println("Profesionales:");
+        for (Asesoria asesoria : asesorias) {
+            if (asesoria instanceof Profesional) {
+                System.out.println(((Profesional) asesoria).getNombre() + "\n" + ((Profesional) asesoria).getRut());
+            }
+        }
+        System.out.println("Administrativos:");
+        for (Asesoria asesoria : asesorias) {
+            if (asesoria instanceof Administrativo) {
+                System.out.println(((Administrativo) asesoria).getNombre() + "\n" + ((Administrativo) asesoria).getRut());
+            }
+        }
+    }
 }
